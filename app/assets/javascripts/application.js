@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require handlebars.runtime
 //= require ./lib/underscore
 //= require ./lib/backbone
 //= require ./app/buggy
