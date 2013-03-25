@@ -6,14 +6,20 @@ class App.Views.Content extends Backbone.View
 
   render: ->
     @$el.html(@template())
-    @renderEmptyView()
-    @renderProjectsView()
     @
 
-  renderEmptyView: ->
-    v = new App.Views.Empty()
-    @$('#main-area').html(v.render().el)
+  swapMain: (v) ->
+    @changeCurrentMainView(v)
+    @$('#main-area').html(@currentMainView.render().el)
 
-  renderProjectsView: ->
-    v = new App.Views.Projects({ collection: new App.Collections.Projects })
-    @$('#sidebar-area').html(v.render().el)
+  changeCurrentMainView: (v) ->
+    @currentMainView.remove() if @currentMainView
+    @currentMainView = v
+
+  swapSide: (v) ->
+    @changeCurrentSideView(v)
+    @$('#sidebar-area').html(@currentSideView.render().el)
+
+  changeCurrentSideView: (v) ->
+    @currentSideView.remove() if @currentSideView
+    @currentSideView = v
