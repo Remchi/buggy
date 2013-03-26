@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require ./lib/csrf_hack
 //= require handlebars.runtime
 //= require ./lib/underscore
 //= require ./lib/backbone
