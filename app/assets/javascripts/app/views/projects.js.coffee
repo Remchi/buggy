@@ -5,7 +5,9 @@ class App.Views.Projects extends Backbone.View
   events:
     "click a.btn": "newProject"
 
-  newProject: ->
+  newProject: (e) ->
+    e.preventDefault()
+    App.Vent.trigger "project:new"
 
   initialize: ->
     @listenTo @collection, "reset", @render
