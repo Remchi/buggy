@@ -1,11 +1,21 @@
 <form id="new_project" action="/projects" method="post">
   <fieldset>
     <legend>New Project</legend>
-    <label for="name">Project Name</label>
-    <input value="{{name}}" type="text" name="name" id="name" placeholder="Project Name" />
-    <label for="description">Description</label>
-    <textarea id="description" name="description" rows="5" cols="30">{{description}}</textarea>
-    <br>
+
+    <div class="control-group">
+      <label for="name" class="control-label">Project Name</label>
+      <div class="controls">
+        <input value="{{name}}" type="text" name="name" id="name" placeholder="Project Name" />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="description" class="control-label">Description</label>
+      <div class="controls">
+        <textarea id="description" name="description" rows="5" cols="30">{{description}}</textarea>
+      </div>
+    </div>
+
     <button type="submit" class="btn">Submit</button>
   </fieldset>
 </form>
