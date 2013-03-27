@@ -1,17 +1,4 @@
-class App.Views.NewProject extends Backbone.View
-
-  template: HandlebarsTemplates['app/templates/new_project']
-
-  events:
-    "click button": "saveProject"
-
-  initialize: ->
-    @listenTo @model, 'sync', @render
-    @listenTo @model, 'invalid', @renderErrors
-    @listenTo @model, 'error', @parseErrorResponse
-
-    @model.fetch() unless @model.isNew()
-
+App.Mixins.Validatable = 
   renderErrors: (model, errors) ->
     @$('.error').removeClass('error')
     @$('span.help-inline').remove()
@@ -27,6 +14,21 @@ class App.Views.NewProject extends Backbone.View
       errors = JSON.parse resp.responseText
       @renderErrors(model, errors.errors)
 
+class App.Views.NewProject extends Backbone.View
+
+  template: HandlebarsTemplates['app/templates/new_project']
+
+  events:
+    "click button": "saveProject"
+
+  initialize: ->
+    @listenTo @model, 'sync', @render
+    @listenTo @model, 'invalid', @renderErrors
+    @listenTo @model, 'error', @parseErrorResponse
+
+    @model.fetch() unless @model.isNew()
+
+
   render: ->
     @$el.html(@template(@model.toJSON()))
     @
@@ -37,3 +39,5 @@ class App.Views.NewProject extends Backbone.View
     @model.set description: @$('#description').val()
     @model.save {},
       success: (model) -> App.Vent.trigger "project:create", model
+
+_.extend App.Views.NewProject.prototype, App.Mixins.Validatable
