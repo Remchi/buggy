@@ -35,7 +35,7 @@ class App.Views.Content extends Backbone.View
     @$('#main-area').html(@currentMainView.render().el)
 
   changeCurrentMainView: (v) ->
-    @currentMainView.remove() if @currentMainView
+    @currentMainView.leave() if @currentMainView
     @currentMainView = v
 
   swapSide: (v) ->
@@ -43,5 +43,5 @@ class App.Views.Content extends Backbone.View
     @$('#sidebar-area').html(@currentSideView.render().el)
 
   changeCurrentSideView: (v) ->
-    @currentSideView.remove() if @currentSideView
+    @currentSideView.leave() if @currentSideView
     @currentSideView = v

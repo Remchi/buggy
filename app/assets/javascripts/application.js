@@ -15,4 +15,5 @@
 //= require handlebars.runtime
 //= require ./lib/underscore
 //= require ./lib/backbone
+//= require ./lib/backbone_leave
 //= require ./app/buggy
