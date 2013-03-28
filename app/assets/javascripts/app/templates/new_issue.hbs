@@ -1,0 +1,21 @@
+<form id="new_issue" action="/issues" method="post">
+  <fieldset>
+    <legend>New Issue</legend>
+
+    <div class="control-group">
+      <label for="name" class="control-label">Issue Name</label>
+      <div class="controls">
+        <input type="text" name="name" id="name" placeholder="Issue Name" />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="description" class="control-label">Description</label>
+      <div class="controls">
+        <textarea id="description" name="description" rows="5" cols="30"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Submit</button>
+  </fieldset>
+</form>
