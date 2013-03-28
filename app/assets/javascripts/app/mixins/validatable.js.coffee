@@ -1,8 +1,12 @@
 App.Mixins.Validatable = 
   renderErrors: (model, errors) ->
+    @clearErrors()
+    _.each errors, @renderError, @
+
+  clearErrors: ->
     @$('.error').removeClass('error')
     @$('span.help-inline').remove()
-    _.each errors, @renderError, @
+
 
   renderError: (errors, attribute) ->
     err = errors.join "; "

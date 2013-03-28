@@ -2,9 +2,8 @@ class IssuesController < ApplicationController
   respond_to :json
 
   def create
-    issue = Issue.new(issue_params)
-    issue.save
-    respond_with(issue)
+    @issue = Issue.new(issue_params)
+    @issue.save
   end
 
   private
