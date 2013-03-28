@@ -14,9 +14,16 @@ class App.Views.ProjectDetails extends Backbone.View
       success: -> App.Vent.trigger "project:destroy"
 
   initialize: ->
-    @listenTo @model, "sync", @render
+    @childViews = []
+    @listenTo @model, "sync", @renderDetails
     @model.fetch()
 
   render: ->
     @$el.html(@template(@model.toJSON()))
     @
+
+  renderDetails: ->
+    @$el.html(@template(@model.toJSON()))
+    v = new App.Views.Issues({ collection: @model.issues })
+    @childViews.push(v)
+    @$('#issues').html(v.render().el)
