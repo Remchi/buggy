@@ -1,9 +1,12 @@
 <h1>{{ name }}</h1>
 <p class="description">{{ description }}</p>
+
+{{#if owned}}
 <div class="pull-right">
   <button class="btn btn-primary edit">Edit</button>
   <button class="btn btn-danger destroy">Delete</button>
 </div>
+{{/if}}
 
 <div class="clearfix"></div>
 <hr />

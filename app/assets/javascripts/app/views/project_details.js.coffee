@@ -13,6 +13,9 @@ class App.Views.ProjectDetails extends Backbone.View
     @model.destroy { wait: true }
 
   initialize: ->
+    if @model.get('user_id') is App.currentUser.id
+      @model.set owned: true
+
     @childViews = []
     @listenTo @model, "change", @renderDetails
     @listenTo @model, "error", @triggerAccessDenied
