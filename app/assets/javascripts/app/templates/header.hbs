@@ -1,14 +1,14 @@
 <div class="navbar-inner">
-  <a href="/" class="brand">Buggy</a>
+  <a href="/" class="brand">{{t "brand"}}</a>
   <ul class="nav pull-left">
-    <li><a href="/#projects">Projects</a></li>
+    <li><a href="/#projects">{{t "projects"}}</a></li>
   </ul>
 
   <ul class="nav pull-right">
     {{#if current_user}}
-    <li><a href="/#logout">Logout</a></li>
+    <li><a href="/#logout">{{t "logout"}}</a></li>
     {{else}}
-    <li><a href="/#login">Login</a></li>
+    <li><a href="/#login">{{t "login"}}</a></li>
     {{/if}}
   </ul>
 

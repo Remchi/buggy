@@ -13,6 +13,8 @@
 //= require jquery
 //= require ./lib/csrf_hack
 //= require handlebars.runtime
+//= require i18n
+//= require i18n/translations
 //= require ./lib/underscore
 //= require ./lib/backbone
 //= require ./lib/backbone_leave

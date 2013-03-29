@@ -60,6 +60,8 @@ GEM
     hike (1.2.1)
     httpauth (0.2.0)
     i18n (0.6.4)
+    i18n-js (2.1.2)
+      i18n
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
     jquery-rails (2.2.1)
@@ -142,6 +144,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0.beta1)
   handlebars_assets
+  i18n-js
   jbuilder (~> 1.0.1)
   jquery-rails
   rails (= 4.0.0.beta1)

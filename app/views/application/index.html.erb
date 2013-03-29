@@ -1,4 +1,9 @@
 <%= javascript_tag do %>
+
+  <% if Rails.env.development? %>
+    I18n.translations = <%= I18n.backend.send(:translations).to_json.html_safe %>
+  <% end %>
+
   <% if current_user %>
     var current_user = {
     id: <%= current_user.id %>,
