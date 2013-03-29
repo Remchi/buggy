@@ -6,7 +6,7 @@
 #= require_tree ./routers
 #
 I18n.defaultLocale = "en"
-I18n.locale = "ru"
+I18n.locale = "en"
 
 Handlebars.registerHelper "t", (msg) -> I18n.t msg
 

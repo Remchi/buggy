@@ -17,7 +17,7 @@ class App.Views.ProjectDetails extends Backbone.View
       @model.set owned: true
 
     @childViews = []
-    @listenTo @model, "change", @renderDetails
+    @listenTo @model, "sync", @renderDetails
     @listenTo @model, "error", @triggerAccessDenied
     @listenTo @model, "destroy", @triggerProjectDestroy
     @model.fetch()
