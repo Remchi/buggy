@@ -1,0 +1,1 @@
+json.csrf form_authenticity_token

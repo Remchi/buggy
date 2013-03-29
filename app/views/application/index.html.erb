@@ -3,7 +3,7 @@
     var current_user = {
     id: <%= current_user.id %>,
     loggedIn: true,
-    username: <%= current_user.username %>
+    username: "<%= current_user.username %>"
     };
   <% else %>
     var current_user = { loggedIn: false };
