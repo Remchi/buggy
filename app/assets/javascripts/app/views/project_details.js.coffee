@@ -10,13 +10,17 @@ class App.Views.ProjectDetails extends Backbone.View
 
   deleteProject: ->
     return unless confirm("Are you sure?")
-    @model.destroy
-      success: -> App.Vent.trigger "project:destroy"
+    @model.destroy { wait: true }
 
   initialize: ->
     @childViews = []
-    @listenTo @model, "sync", @renderDetails
+    @listenTo @model, "change", @renderDetails
+    @listenTo @model, "error", @triggerAccessDenied
+    @listenTo @model, "destroy", @triggerProjectDestroy
     @model.fetch()
+
+  triggerProjectDestroy: -> App.Vent.trigger "project:destroy"
+  triggerAccessDenied: -> App.Vent.trigger "access_denied"
 
   render: ->
     @$el.html(@template(@model.toJSON()))

@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   respond_to :json
 
   before_filter :authenticated, only: [ :create ]
+  before_filter :owner, only: [ :update, :destroy ]
 
   def index
     @projects = Project.all
@@ -18,15 +19,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    project = Project.find(params[:id])
-    project.destroy
-    respond_with(project)
+    @project.destroy
+    respond_with(@project)
   end
 
   def update
-    project = Project.find(params[:id])
-    project.update_attributes(project_params)
-    respond_with(project)
+    @project.update_attributes(project_params)
+    respond_with(@project)
   end
 
   private
@@ -37,6 +36,13 @@ class ProjectsController < ApplicationController
 
   def authenticated
     if cannot? :create, Project
+      render status: :forbidden, text: "Forbidden"
+    end
+  end
+
+  def owner
+    @project = Project.find(params[:id])
+    if cannot? params[:action].to_sym, @project
       render status: :forbidden, text: "Forbidden"
     end
   end
